@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import ResourceList from './ResourceList';
 import './App.css';
 
-class App extends Component {
-  render() {
+const App = () => {
+    const [resource, setResource] = useState('posts');
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <div style={{textAlign: 'center'}}>
+            <div>
+                <button style={{margin: 5, padding: 10}} onClick={() => setResource('Posts')}>Posts</button>
+                <button style={{margin: 5, padding: 10}} onClick={() => setResource('Todos')}>Todos</button>
+            </div>
+            <div style={{marginTop: 30}}>
+               <ResourceList resource={resource} />
+            </div>    
+        </div>
     );
-  }
 }
 
 export default App;
